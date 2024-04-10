@@ -1,0 +1,23 @@
+<div class="overflow-x-auto">
+  <table class="table-auto w-full custom-table">
+    <thead>
+    <tr class="header">
+      <th *ngFor="let column of columns" class="px-4 py-2">{{ capitalizeFirstLetter(column) }}</th>
+      <th class="px-4 py-2">Actions</th>
+    </tr>
+    </thead>
+    <tbody id="table-body">
+    <tr *ngFor="let item of data" class="data-row">
+      <td *ngFor="let column of columns" class="px-4 py-2">{{ item[column] }}</td>
+      <td class="px-4 py-2">
+        <button mat-icon-button class="mr-4" (click)="editItem.emit(item.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteItem.emit(item.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

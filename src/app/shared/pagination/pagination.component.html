@@ -1,0 +1,37 @@
+<div *ngIf="elements.length > 0" class="flex flex-col sm:flex-row justify-between items-start">
+  <div class="mr-8 mb-4">
+    <mat-form-field>
+      <mat-label class="paginator-text">Items per page:</mat-label>
+      <mat-select (click)="setResultsPerPage($event)">
+        <mat-option *ngFor="let value of pageOptions" [value]="value">{{value}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="mt-3 paginator-text">
+    <span>Page: {{currentPage}} / {{pages}} of {{total}} </span>
+  </div>
+
+  <div class="flex flex-wrap justify-end items-start">
+    <div>
+      <button mat-icon-button [disabled]="currentPage === 1" (click)="firstPage()">
+        <mat-icon>first_page</mat-icon>
+      </button>
+      <span class="mr-1"></span>
+      <button mat-icon-button [disabled]="currentPage === 1" (click)="previousPage()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <span class="mr-1"></span>
+
+      <button mat-icon-button [disabled]="currentPage === pages" (click)="nextPage()">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+
+      <span class="mr-1"></span>
+      <button mat-icon-button [disabled]="currentPage === pages" (click)="lastPage()">
+        <mat-icon>last_page</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<small>Add User</small>
+<form [formGroup]="userForm" #formDirective="ngForm" (ngSubmit)="addUser(); formDirective.resetForm();">
+  <div class="flex">
+    <mat-form-field class="flex-1 mr-7">
+      <mat-label>Name</mat-label>
+      <input matInput value="" type="text" formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field class="flex-1 mr-7">
+      <mat-label>Email</mat-label>
+      <input matInput value="" type="email" formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field class="mr-7">
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mr-7">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="inactive">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="!userForm.valid">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</form>

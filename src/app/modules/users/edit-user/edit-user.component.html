@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<div mat-dialog-content>
+  <form [formGroup]="editForm" (ngSubmit)="editUser()">
+    <mat-form-field class="w-full max-w-[250px] mr-7">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full max-w-[250px] mr-7">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender">
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="w-full max-w-[250px]">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option value="active">Active</mat-option>
+        <mat-option value="inactive">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="flex justify-end">
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="!editForm.valid"
+      >
+        Edit
+      </button>
+      <button type="button" mat-button (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

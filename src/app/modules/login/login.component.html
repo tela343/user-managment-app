@@ -1,0 +1,51 @@
+<div class="w-full h-screen flex justify-center items-center bg-login">
+  <div class="bg-white rounded-lg shadow-lg p-8 max-w-md text-center">
+    <h1 class="text-3xl font-bold mb-4 mt-4">User Management App</h1>
+    <h2 class="text-m font-semibold mb-4">Login</h2>
+    <p class="mb-4">
+      Click
+      <a
+        href="https://gorest.co.in/consumer/login"
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        class="text-[#6002ee]"
+        >here</a>
+      to get your access token
+    </p>
+    <p
+      *ngIf="errorMessage && loginForm.value.token.trim() !== ''"
+      class="text-red-500 mb-4"
+    >
+      {{ errorMessage }}
+    </p>
+    <form [formGroup]="loginForm" class="space-y-4">
+      <mat-form-field class="w-full">
+        <mat-label>Token</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="token"
+          (click)="onInput()"
+          (keyup)="onKeyUp($event)"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          [attr.aria-label]="'Hide token'"
+          [attr.aria-pressed]="hide">
+          <mat-icon (click)="hide = !hide">{{hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="!loginForm.valid"
+        (click)="onSubmit()"
+        class="w-full">
+        Login
+      </button>
+    </form>
+    <app-spinner [showSpinner]="spinner"></app-spinner>
+  </div>
+</div>
